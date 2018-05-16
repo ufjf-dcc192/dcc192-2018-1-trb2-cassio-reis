@@ -7,31 +7,32 @@
         <%@include file ="jspf/cabecalho.jspf"%>
     </head>
     <body>
-
         <div class="container">
-                   <form method="post">
+            <h1> Bem-vindo </h1>
+            <h3> Faça seu cadastro </h3>
+        </div>
+        <div class="container">
+            <form method="post">
                 <div class="form-group">
-                    <label for="usr">Pedido para mesa: </label>
-                    <input name="mesa" class="form-control" readonly>     
+                    <label for="usr">Nome:</label>
+                    <input name="mesa" class="form-control" required>     
                 </div>
 
                 <div class="form-group">
-                    <label for="usr"> Quantidade:</label>
-                    <input type="number" min="0" max="15" value="1" class="form-control" name = "quantidade" /> 
-
+                    <label for="usr">Email</label>
+                    <input type="email" name="email" class="form-control" required>     
                 </div>
 
-                <!--COMBO DE SELEÇÃO -->
                 <div class="form-group">
-                    <select name="produto" class="form-control">
-                      </select>
-
+                    <label for="usr">Senha</label>
+                    <input type="password" name="senha" class="form-control" required>     
                 </div>
 
-                   <input class="btn btn-primary btn-lg" type ="Submit" /> 
+                <input class="btn btn-primary btn" type ="Submit" /> 
+                <input class="btn btn-primary btn" type ="Reset" /> 
             </form>
         </div>
     </body>
-        <%@include file ="jspf/rodape.jspf"%>
+    <%@include file ="jspf/rodape.jspf"%>
 
 </html>
