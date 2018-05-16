@@ -15,7 +15,7 @@
             <form method="post">
                 <div class="form-group">
                     <label for="usr">Nome:</label>
-                    <input name="mesa" class="form-control" required>     
+                    <input name="nome" class="form-control" required>     
                 </div>
 
                 <div class="form-group">

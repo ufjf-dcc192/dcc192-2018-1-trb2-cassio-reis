@@ -54,10 +54,10 @@ class ParticipanteDAO {
         return Participantes;
     }
 
-    void create(String titulo) {
+    void create(String nome,String email, String senha ) {
         try {
             Statement comando = conexao.createStatement();
-            comando.executeUpdate(String.format("INSERT INTO Participante(titulo) VALUES('%s')", titulo));
+            comando.executeUpdate(String.format("INSERT INTO Participante (NOME,EMAIL,SENHA) VALUES('%s','%s','%s')", nome,email,senha));
             comando.close();
         } catch (SQLException ex) {
             Logger.getLogger(ParticipanteDAO.class.getName()).log(Level.SEVERE, null, ex);

@@ -39,4 +39,24 @@ public class ParticipanteServlet extends HttpServlet {
         }
 
     }
+
+    @Override
+    protected void doPost(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+     
+        Map<String, String> rotas = new HashMap<>();
+        rotas.put("/cadastro-pessoas.html", "trabalho.ufjf.dcc192.NewParticipantesNewCommand");
+    
+    
+        String clazzName = rotas.get(request.getServletPath());
+        try {
+            Comando comando = (Comando) Class.forName(clazzName).newInstance();
+            comando.exec(request, response);
+        } catch (ClassNotFoundException|IllegalAccessException|InstantiationException ex) {
+            response.sendError(500, "Erro: "+ex);
+            Logger.getLogger(ParticipanteServlet.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+        
+    }
 }
