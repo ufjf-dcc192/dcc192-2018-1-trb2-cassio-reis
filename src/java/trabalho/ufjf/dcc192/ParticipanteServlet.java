@@ -18,7 +18,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 
-@WebServlet(name = "ParticipanteServlet", urlPatterns = {"/cadastrar-participante.html"})
+@WebServlet(name = "ParticipanteServlet", urlPatterns = {"/cadastro-pessoas.html"})
 public class ParticipanteServlet extends HttpServlet {
 
     @Override
@@ -26,7 +26,7 @@ public class ParticipanteServlet extends HttpServlet {
             throws ServletException, IOException {
         
         Map<String, String> rotas = new HashMap<>();
-        rotas.put("/cadastrar-participante.html", "br.ufjf.dcc192.ParticipantesNewCommand");
+        rotas.put("/cadastro-pessoas.html", "trabalho.ufjf.dcc192.ParticipantesNewCommand");
     
     
     String clazzName = rotas.get(request.getServletPath());

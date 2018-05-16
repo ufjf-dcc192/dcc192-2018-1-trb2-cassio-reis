@@ -1,0 +1,10 @@
+<%@ page pageEncoding="UTF-8" %>
+                   
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+  <footer style="text-align: center;"  class="footer navbar-fixed-bottom">
+
+      <p> © 2018 Copyright:Cássio Reis</p>
+
+</footer>
