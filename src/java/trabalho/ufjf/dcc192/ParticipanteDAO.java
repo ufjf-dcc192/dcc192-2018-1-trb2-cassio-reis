@@ -21,6 +21,7 @@ class ParticipanteDAO {
             instancia = new ParticipanteDAO();
         }
         return instancia;
+        
     }
 
     public ParticipanteDAO() {
