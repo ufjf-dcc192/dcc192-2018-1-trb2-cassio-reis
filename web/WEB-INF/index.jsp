@@ -1,3 +1,7 @@
+
+
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<!DOCTYPE html>
 <html>
     <head>
         <title>Amigoculto dos amigos</title>
@@ -49,7 +53,7 @@
                         <button type="button" class="close" data-dismiss="modal">&times;</button>
                         <h4 class="modal-title">Faça seu login</h4>
                     </div>
-                    <form>
+                    <form method="post">
                         <div class="modal-body">
                             <div class="form-group">
                                 <label for="usr">Email:</label>
@@ -60,7 +64,7 @@
                                 <input type="password" class="form-control" id="pwd" name="senha">
                             </div>         </div>
                         <div class="modal-footer">
-                            <a href="login.html"  class="btn btn-default"> Entrar </a>
+                            <button type="submit" class="btn btn-default"> Entrar </button>
                             <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
                         </div>
                     </form>
