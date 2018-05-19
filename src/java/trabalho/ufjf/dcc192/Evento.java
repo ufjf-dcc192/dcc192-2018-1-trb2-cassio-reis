@@ -9,22 +9,28 @@ public class Evento {
     private String eventoNome;
     private Date dataSorteio;
     private Date dataEvento;
+    private int situacao;
 
-    public Evento(int eventoCod, String eventoNome, Date dataSorteio, Date dataEvento) {
+    public Evento(int eventoCod, String eventoNome, Date dataSorteio, Date dataEvento, int situacao) {
         this.eventoCod = eventoCod;
         this.eventoNome = eventoNome;
         this.dataSorteio = dataSorteio;
         this.dataEvento = dataEvento;
+        this.situacao = situacao;
     }
+
+    public int getSituacao() {
+        return situacao;
+    }
+
+    public void setSituacao(int situacao) {
+        this.situacao = situacao;
+    }
+    
 
     public Evento() {
     }
 
-    public Evento(String eventoNome, Date dataSorteio, Date dataEvento) {
-        this.eventoNome = eventoNome;
-        this.dataSorteio = dataSorteio;
-        this.dataEvento = dataEvento;
-    }
   
     public int getEventoCod() {
         return eventoCod;

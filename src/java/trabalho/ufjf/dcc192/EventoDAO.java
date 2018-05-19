@@ -39,16 +39,18 @@ class EventoDAO {
         }
     }
 
-    public List<Participante> listAll() {
-        List<Participante> Participantes = new ArrayList<>();
+    public List<Evento> listAll() {
+        List<Evento> Eventos = new ArrayList<>();
         try {
             Statement comando = conexao.createStatement();
-            ResultSet resultado = comando.executeQuery("SELECT id,titulo from Participante");
+            ResultSet resultado = comando.executeQuery("SELECT EVENTONOME,DATASORTEIO,DATAEVENTO,SITUACAO from Evento");
             while (resultado.next()) {
-                Participante Participante = new Participante();
-              //  Participante.setId(resultado.getLong("id"));
-        //        Participante.setTitulo(resultado.getString("titulo"));
-                Participantes.add(Participante);
+                Evento Evento = new Evento();
+                Evento.setEventoNome(resultado.getString("EVENTONOME"));
+                Evento.setDataEvento(resultado.getDate("DATAEVENTO"));
+                Evento.setDataSorteio(resultado.getDate("DATASORTEIO"));
+                Evento.setSituacao(resultado.getInt("SITUACAO"));
+                Eventos.add(Evento);
 
             }
             resultado.close();
@@ -56,7 +58,7 @@ class EventoDAO {
         } catch (SQLException ex) {
             Logger.getLogger(EventoDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
-        return Participantes;
+        return Eventos;
     }
 
     void create(String nome,Date dataSorteio, Date dataEvento ) {
@@ -66,12 +68,13 @@ class EventoDAO {
             java.sql.Date dt = new java.sql.Date (dataEvento.getTime());
             
             Statement comando = conexao.createStatement();
-            String sql = "INSERT INTO EVENTO (EVENTONOME,DATASORTEIO,DATAEVENTO) VALUES(?,?,?)";
+            String sql = "INSERT INTO EVENTO (EVENTONOME,DATASORTEIO,DATAEVENTO,SITUACAO) VALUES(?,?,?,?)";
             PreparedStatement stmt = conexao.prepareStatement(sql);
             stmt.setString(1, nome);
             stmt.setDate(2,  d);
             stmt.setDate(3,  dt);
-
+            stmt.setInt(4,  0);
+            
             stmt.executeUpdate();
                                     
    
@@ -85,19 +88,19 @@ class EventoDAO {
     void delete(Long id){
         try {
             Statement comando = conexao.createStatement();
-            comando.executeUpdate(String.format("DELETE FROM Participante WHERE id=%d", id));
+            comando.executeUpdate(String.format("DELETE FROM Evento WHERE id=%d", id));
             comando.close();
         } catch (SQLException ex) {
             Logger.getLogger(EventoDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
-    List<Participante> select(String email, String senha) {
+    List<Evento> select(String email, String senha) {
         
-     List<Participante> Participantes = new ArrayList<>();
+     List<Evento> Eventos = new ArrayList<>();
         try {
             
-            String sql = "select * from Participante where email=? and senha=?";
+            String sql = "select * from Evento where email=? and senha=?";
             PreparedStatement stmt = conexao.prepareStatement(sql);
             stmt.setString(1, email);
             stmt.setString(2, senha);
@@ -106,10 +109,10 @@ class EventoDAO {
             ResultSet resultado  = stmt.executeQuery();
             
             while (resultado.next()) {
-                Participante Participante = new Participante();
-              //  Participante.setId(resultado.getLong("id"));
-        //        Participante.setTitulo(resultado.getString("titulo"));
-                Participantes.add(Participante);
+                Evento Evento = new Evento();
+              //  Evento.setId(resultado.getLong("id"));
+        //        Evento.setTitulo(resultado.getString("titulo"));
+                Eventos.add(Evento);
 
             }
             resultado.close();
@@ -117,7 +120,7 @@ class EventoDAO {
         } catch (SQLException ex) {
             Logger.getLogger(EventoDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
-        return Participantes;
+        return Eventos;
     
 
     }
