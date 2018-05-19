@@ -53,8 +53,8 @@ public class EventoServlet extends HttpServlet {
             throws ServletException, IOException {
         
           Map<String, String> rotas = new HashMap<>();
-        rotas.put("/cadastrar-evento", "trabalho.ufjf.dcc192.NewEventoNewCommand");
-      //  rotas.put("/index.html", "trabalho.ufjf.dcc192.ParticipantesLoginCommand");
+        rotas.put("/cadastrar-evento.html", "trabalho.ufjf.dcc192.NewEventoNewCommand");
+        //rotas.put("/index.html", "trabalho.ufjf.dcc192.ParticipantesLoginCommand");
     
         String clazzName = rotas.get(request.getServletPath());
         try {

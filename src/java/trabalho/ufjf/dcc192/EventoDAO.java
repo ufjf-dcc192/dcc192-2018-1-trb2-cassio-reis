@@ -1,13 +1,16 @@
 
 package trabalho.ufjf.dcc192;
 
+import static com.sun.org.apache.xalan.internal.lib.ExsltDatetime.date;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.sql.Timestamp;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -56,11 +59,24 @@ class EventoDAO {
         return Participantes;
     }
 
-    void create(String nome,String email, String senha ) {
+    void create(String nome,Date dataSorteio, Date dataEvento ) {
         try {
+         
+            java.sql.Date d = new java.sql.Date (dataSorteio.getTime());
+            java.sql.Date dt = new java.sql.Date (dataEvento.getTime());
+            
             Statement comando = conexao.createStatement();
-            comando.executeUpdate(String.format("INSERT INTO Participante (NOME,EMAIL,SENHA) VALUES('%s','%s','%s')", nome,email,senha));
-            comando.close();
+            String sql = "INSERT INTO EVENTO (EVENTONOME,DATASORTEIO,DATAEVENTO) VALUES(?,?,?)";
+            PreparedStatement stmt = conexao.prepareStatement(sql);
+            stmt.setString(1, nome);
+            stmt.setDate(2,  d);
+            stmt.setDate(3,  dt);
+
+            stmt.executeUpdate();
+                                    
+   
+               
+  
         } catch (SQLException ex) {
             Logger.getLogger(EventoDAO.class.getName()).log(Level.SEVERE, null, ex);
         }

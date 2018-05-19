@@ -6,7 +6,11 @@
 package trabalho.ufjf.dcc192;
 
 import java.io.IOException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -17,13 +21,25 @@ import javax.servlet.http.HttpServletResponse;
  */
 public class NewEventoNewCommand implements Comando {
     public void exec(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        
-       String nome = request.getParameter("nome");
-       String email = request.getParameter("dataSorteio");
-       String senha = request.getParameter("dataEvento");
        
-       EventoDAO.getInstance().create(nome,email,senha);
-       response.sendRedirect("index.html");
+        
+        try {
+            SimpleDateFormat formato = new SimpleDateFormat("yyyy-mm-dd");
+                  
+            String nome = request.getParameter("nome");
+            Date dataSorteio = formato.parse(request.getParameter("dataSorteio"));
+            Date dataEvento = formato.parse(request.getParameter("dataEvento"));
+            
+            EventoDAO.getInstance().create(nome,dataSorteio,dataEvento);
+            
+            
+            
+            response.sendRedirect("inicial.html");
+            
+            //#erro inserir tratametno
+        } catch (ParseException ex) {
+            Logger.getLogger(NewEventoNewCommand.class.getName()).log(Level.SEVERE, null, ex);
+        }
        
     }
     
