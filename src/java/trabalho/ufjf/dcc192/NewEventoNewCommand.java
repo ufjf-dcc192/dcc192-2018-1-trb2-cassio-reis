@@ -34,11 +34,8 @@ public class NewEventoNewCommand implements Comando {
             
             EventoDAO.getInstance().create(nome,dataSorteio,dataEvento);
             
-            List<Evento> eventos = EventoDAO.getInstance().listAll();
-            request.setAttribute("eventos", eventos);
-
-            RequestDispatcher despachante = request.getRequestDispatcher("/WEB-INF/ver-eventos.jsp");
-            despachante.forward(request, response);
+            
+            response.sendRedirect("ver-eventos.html");
             
             //#erro inserir tratametno
         } catch (ParseException ex) {

@@ -30,7 +30,7 @@
                     %>
                     <tr>
 
-                        <td> <a href="ver-mesa.html?codigo=<%=i%>"><%= eventos.get(i).getEventoNome() %> </a></td>
+                        <td> <a href="descricao-evento.html?codigo=<%=i%>"><%= eventos.get(i).getEventoNome() %> </a></td>
                         <% if (eventos.get(i).getSituacao() == 0) {
                         %><td style="color:blue">
                             <b> SORTEAR</b>
@@ -43,11 +43,11 @@
                                 }
                             %> 
                         </td>
-                        <td > <a href="excluir-mesa.html?codigo=<%=i%>"><i class="fa fa-ban" style="font-size:24px"></i> </a> </td>
+                        <td > <a href="excluir-evento.html?codigo=<%=eventos.get(i).getEventoCod() %>"><i class="fa fa-ban" style="font-size:24px"></i> </a> </td>
                         
                         <td><%= eventos.get(i).getDataEvento() %> </td>
                         <td><%= eventos.get(i).getDataSorteio() %> </td>
-                        <td > <a href="excluir-evento.html?codigo=<%=i%>"><i class="fa fa-ban" style="font-size:24px"></i> </a> </td>
+                        <td > <a href="excluir-evento.html?codigo=<%=eventos.get(i).getEventoCod()%>"><i class="fa fa-ban" style="font-size:24px"></i> </a> </td>
 
                         
                     </tr>

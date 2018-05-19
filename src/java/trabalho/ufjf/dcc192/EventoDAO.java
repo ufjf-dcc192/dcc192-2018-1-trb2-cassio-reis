@@ -43,13 +43,14 @@ class EventoDAO {
         List<Evento> Eventos = new ArrayList<>();
         try {
             Statement comando = conexao.createStatement();
-            ResultSet resultado = comando.executeQuery("SELECT EVENTONOME,DATASORTEIO,DATAEVENTO,SITUACAO from Evento");
+            ResultSet resultado = comando.executeQuery("SELECT * from Evento");
             while (resultado.next()) {
                 Evento Evento = new Evento();
                 Evento.setEventoNome(resultado.getString("EVENTONOME"));
                 Evento.setDataEvento(resultado.getDate("DATAEVENTO"));
                 Evento.setDataSorteio(resultado.getDate("DATASORTEIO"));
                 Evento.setSituacao(resultado.getInt("SITUACAO"));
+                Evento.setEventoCod(resultado.getInt("EVENTOCOD"));
                 Eventos.add(Evento);
 
             }
@@ -97,7 +98,7 @@ class EventoDAO {
 
     List<Evento> select(String email, String senha) {
         
-     List<Evento> Eventos = new ArrayList<>();
+    List<Evento> Eventos = new ArrayList<>();
         try {
             
             String sql = "select * from Evento where email=? and senha=?";
@@ -124,4 +125,37 @@ class EventoDAO {
     
 
     }
+
+
+    public List<Evento> listEvento(int eventoCod) throws SQLException {
+      
+            List<Evento> eventos = new ArrayList<>();
+            
+            
+            String sql = "select * from Evento where eventocod=? ";
+            PreparedStatement stmt = conexao.prepareStatement(sql);
+            stmt.setInt(1, eventoCod);
+            
+                                    
+            Statement comando = conexao.createStatement();
+            ResultSet resultado  = stmt.executeQuery();
+            
+            while (resultado.next()) {
+                Evento Evento = new Evento();
+                Evento.setEventoNome(resultado.getString("EVENTONOME"));
+                Evento.setDataEvento(resultado.getDate("DATAEVENTO"));
+                Evento.setDataSorteio(resultado.getDate("DATASORTEIO"));
+                Evento.setSituacao(resultado.getInt("SITUACAO"));
+                Evento.setEventoCod(resultado.getInt("EVENTOCOD"));
+                eventos.add(Evento);
+                
+                
+            }
+            resultado.close();
+            comando.close();
+            return eventos;
+     
+    }
 }
+    
+
