@@ -34,7 +34,6 @@ public class NewEventoNewCommand implements Comando {
             
             EventoDAO.getInstance().create(nome,dataSorteio,dataEvento);
             
-            
             response.sendRedirect("ver-eventos.html");
             
             //#erro inserir tratametno

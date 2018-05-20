@@ -61,6 +61,34 @@ class EventoDAO {
         }
         return Eventos;
     }
+    
+    public List<Evento> listUnicEvent(int codEvento) {
+        List<Evento> Eventos = new ArrayList<>();
+        try {
+            Statement comando = conexao.createStatement();
+            
+            String sql = "select * from Evento where EVENTOCOD=?";
+            PreparedStatement stmt = conexao.prepareStatement(sql);
+            stmt.setInt(1, codEvento);
+            ResultSet resultado  = stmt.executeQuery();                      
+            
+            while (resultado.next()) {
+                Evento Evento = new Evento();
+                Evento.setEventoNome(resultado.getString("EVENTONOME"));
+                Evento.setDataEvento(resultado.getDate("DATAEVENTO"));
+                Evento.setDataSorteio(resultado.getDate("DATASORTEIO"));
+                Evento.setSituacao(resultado.getInt("SITUACAO"));
+                Evento.setEventoCod(resultado.getInt("EVENTOCOD"));
+                Eventos.add(Evento);
+
+            }
+            resultado.close();
+            comando.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(EventoDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return Eventos;
+    }
 
     void create(String nome,Date dataSorteio, Date dataEvento ) {
         try {
@@ -77,11 +105,7 @@ class EventoDAO {
             stmt.setInt(4,  0);
             
             stmt.executeUpdate();
-                                    
-   
-               
-  
-        } catch (SQLException ex) {
+      } catch (SQLException ex) {
             Logger.getLogger(EventoDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
@@ -127,7 +151,7 @@ class EventoDAO {
     }
 
 
-    public List<Evento> listEvento(int eventoCod) throws SQLException {
+    public Evento listEvento(int eventoCod) throws SQLException {
       
             List<Evento> eventos = new ArrayList<>();
             
@@ -153,7 +177,7 @@ class EventoDAO {
             }
             resultado.close();
             comando.close();
-            return eventos;
+            return eventos.get(0);
      
     }
 }

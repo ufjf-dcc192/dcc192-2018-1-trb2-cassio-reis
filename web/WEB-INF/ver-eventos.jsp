@@ -30,7 +30,7 @@
                     %>
                     <tr>
 
-                        <td> <a href="descricao-evento.html?codigo=<%=i%>"><%= eventos.get(i).getEventoNome() %> </a></td>
+                        <td> <a href="descricao-evento.html?codigo=<%=eventos.get(i).getEventoCod() %>"><%= eventos.get(i).getEventoNome() %> </a></td>
                         <% if (eventos.get(i).getSituacao() == 0) {
                         %><td style="color:blue">
                             <b> SORTEAR</b>

@@ -22,13 +22,14 @@ public class EventoDescricaoListCommand implements Comando {
             int eventoCod = Integer.parseInt(request.getParameter("codigo"));
             
             EventoDAO.getInstance().listEvento(eventoCod);
-            List<Evento> eventos = EventoDAO.getInstance().listAll();
             
-            request.setAttribute ("eventos", eventos);
+            Evento evento = EventoDAO.getInstance().listEvento(eventoCod);
+            
+            request.setAttribute ("eventos", evento);
             RequestDispatcher despachante = request.getRequestDispatcher("/WEB-INF/evento-descricao.jsp");
             despachante.forward (request, response);
             
-            //#erro inserir tratametno
+        
         } catch (SQLException ex) {
             Logger.getLogger(EventoDescricaoListCommand.class.getName()).log(Level.SEVERE, null, ex);
         }
