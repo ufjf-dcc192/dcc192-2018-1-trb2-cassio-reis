@@ -12,8 +12,11 @@ public class InicialCommand implements Comando {
     
     @Override
     public void exec(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        int participanteCod = Integer.parseInt(request.getParameter("participantecod"));
+        
         RequestDispatcher dispacher = request.getRequestDispatcher("/WEB-INF/inicial.jsp");
-       // request.setAttribute("titulo", "Página inicial");
+        
+        request.setAttribute("participantecod",participanteCod);
         dispacher.forward(request, response);
     }
 }

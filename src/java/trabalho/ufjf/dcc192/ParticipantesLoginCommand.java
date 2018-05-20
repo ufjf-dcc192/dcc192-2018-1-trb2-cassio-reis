@@ -19,7 +19,10 @@ public class ParticipantesLoginCommand implements Comando {
             request.setAttribute("usuarioEmail", participantes.get(0).getEmail());
             request.setAttribute("usuarioNome", participantes.get(0).getNome());
             request.setAttribute("usuarioSenha", participantes.get(0).getSenha());
-            response.sendRedirect("inicial.html");
+            request.setAttribute("participantecod", participantes.get(0).getCodigoParticipante());
+            RequestDispatcher dispacher = request.getRequestDispatcher("/WEB-INF/inicial.jsp");
+            dispacher.forward(request, response);
+            
         } else {
             //#erro1 - tratar erro se a pessoa nao conseguir fazer o login.
         }

@@ -6,6 +6,14 @@ public class Participante {
     private String email;
     private String senha;
 
+    public int getCodigoParticipante() {
+        return codigoParticipante;
+    }
+
+    public void setCodigoParticipante(int codigoParticipante) {
+        this.codigoParticipante = codigoParticipante;
+    }
+
     public Participante(int codigoParticipante, String nome, String email, String senha) {
         this.codigoParticipante = codigoParticipante;
         this.nome = nome;

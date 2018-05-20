@@ -37,7 +37,9 @@ public class ControleServlet extends HttpServlet {
         //#erro alterar quando for implemntaqr o banco, so tirar a exclamaçao 
         if(!(usuarioNome==null && usuarioSenha == null && usuarioEmail==null)){
             Map<String, String> rotas = new HashMap<>();
-            rotas.put("/inicial.html", "trabalho.ufjf.dcc192.IndexCommand");        //rotas.put("/cadastro-pessoas.html", "trabalho.ufjf.dcc192.ParticipantesNewCommand");
+            rotas.put("/inicial.html", "trabalho.ufjf.dcc192.IndexCommand"); 
+            
+            //rotas.put("/cadastro-pessoas.html", "trabalho.ufjf.dcc192.ParticipantesNewCommand");
             String clazzName = rotas.get(request.getServletPath());
         
     

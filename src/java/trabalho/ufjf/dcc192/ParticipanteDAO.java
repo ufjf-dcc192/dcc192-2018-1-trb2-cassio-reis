@@ -90,8 +90,10 @@ class ParticipanteDAO {
             
             while (resultado.next()) {
                 Participante Participante = new Participante();
-              //  Participante.setId(resultado.getLong("id"));
-        //        Participante.setTitulo(resultado.getString("titulo"));
+                Participante.setCodigoParticipante(resultado.getInt("participantecod"));
+                Participante.setEmail(resultado.getString("nome"));
+                Participante.setNome(resultado.getString("email"));
+                Participante.setSenha(resultado.getString("senha"));
                 Participantes.add(Participante);
 
             }

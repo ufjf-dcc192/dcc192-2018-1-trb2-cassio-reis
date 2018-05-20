@@ -11,8 +11,12 @@ public class EventoListCommand implements Comando {
 
     public void exec(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
+        int participanteCod = Integer.parseInt(request.getParameter("participantecod"));
+       
+        
         List<Evento> eventos = EventoDAO.getInstance().listAll();
         request.setAttribute("eventos", eventos);
+        request.setAttribute("participantecod", participanteCod);
         RequestDispatcher despachante = request.getRequestDispatcher("/WEB-INF/ver-eventos.jsp");
         despachante.forward(request, response);
 

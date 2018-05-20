@@ -23,7 +23,7 @@ import javax.servlet.http.HttpServletResponse;
  */
 public class NewEventoNewCommand implements Comando {
     public void exec(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-       
+  
         
         try {
             SimpleDateFormat formato = new SimpleDateFormat("yyyy-mm-dd");
