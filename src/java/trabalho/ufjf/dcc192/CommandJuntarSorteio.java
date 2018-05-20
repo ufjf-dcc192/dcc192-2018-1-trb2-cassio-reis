@@ -16,13 +16,23 @@ public class CommandJuntarSorteio implements Comando{
     public void exec(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         try {
             int eventoCod = Integer.parseInt(request.getParameter("eventocod"));
-            int participanteCod = Integer.parseInt(request.getParameter("participantecod"));
-            AtividadeDAO.getInstance().juntarSorteio(eventoCod,participanteCod);
+            int usuarioLogado = Integer.parseInt(request.getParameter("participantecod"));
+            AtividadeDAO.getInstance().juntarSorteio(eventoCod,usuarioLogado);
             
-
+            
+            
             Evento evento = EventoDAO.getInstance().listEvento(eventoCod);
+            
+            
+            List<Participante> participantes = AtividadeDAO.getInstance().listParticipanteParticipantes(eventoCod);
+           
+          
+            for ( int i =0 ; i<participantes.size();i++){
+                evento.getParticipantes().add(participantes.get(i));
+            }
+            
             request.setAttribute ("eventocod", evento);
-            request.setAttribute ("participantecod", participanteCod);
+            request.setAttribute ("participantecod", usuarioLogado);
             RequestDispatcher despachante = request.getRequestDispatcher("/WEB-INF/evento-descricao.jsp");
             despachante.forward (request, response);
             

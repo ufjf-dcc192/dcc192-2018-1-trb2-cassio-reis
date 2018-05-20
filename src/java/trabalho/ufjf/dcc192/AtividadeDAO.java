@@ -40,7 +40,7 @@ class AtividadeDAO {
     void delete(int eventoCod, int participanteCod){
        try {
             Statement comando = conexao.createStatement();
-            String sql ="DELETE FROM Evento WHERE PARTICIPANTECOD=? "
+            String sql ="DELETE FROM Participante WHERE PARTICIPANTECOD=? "
                     + "AND EVENTOCOD=?";
             PreparedStatement stmt = conexao.prepareStatement(sql);
             stmt.setInt(1, eventoCod);
@@ -65,11 +65,43 @@ class AtividadeDAO {
       
      
       } catch (SQLException ex) {
-            Logger.getLogger(EventoDAO.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ParticipanteDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-         
-         
+
+    List<Participante> listParticipanteParticipantes(int eventoCod) {
+
+          List<Participante> participantes = new ArrayList<>();
+        try {
+            
+            Statement comando = conexao.createStatement();
+            
+            String sql = "SELECT * from atividades a "
+                    + "join participante p on p.participantecod=a.participantecod "
+                    + "where eventocod=?";
+            
+            PreparedStatement stmt = conexao.prepareStatement(sql);
+            stmt.setInt(1, eventoCod);
+            ResultSet resultado  = stmt.executeQuery();      
+                                    
+            while (resultado.next()) {
+                Participante participante = new Participante();
+               
+                participante.setNome(resultado.getString("NOME"));
+                participante.setEmail(resultado.getString("email"));
+                participantes.add(participante);
+
+            }
+            resultado.close();
+            comando.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(ParticipanteDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return participantes;
     }
+         
+         
+   }
+
    
 

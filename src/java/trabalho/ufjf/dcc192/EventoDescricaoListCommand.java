@@ -20,13 +20,13 @@ public class EventoDescricaoListCommand implements Comando {
 
         try {
             int eventoCod = Integer.parseInt(request.getParameter("eventocod"));
-            int eventoParticipante = Integer.parseInt(request.getParameter("participantecod"));
+            int usuarioLogado = Integer.parseInt(request.getParameter("participantecod"));
          
             
             Evento evento = EventoDAO.getInstance().listEvento(eventoCod);
-            
+             
             request.setAttribute ("eventocod", evento);
-            request.setAttribute ("participantecod", eventoParticipante);
+            request.setAttribute ("participantecod", usuarioLogado);
             RequestDispatcher despachante = request.getRequestDispatcher("/WEB-INF/evento-descricao.jsp");
             despachante.forward (request, response);
             

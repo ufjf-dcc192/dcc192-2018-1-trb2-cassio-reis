@@ -1,3 +1,5 @@
+<%@page import="trabalho.ufjf.dcc192.Participante"%>
+<%@page import="java.util.List"%>
 <%@page import="trabalho.ufjf.dcc192.Evento"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 
@@ -5,6 +7,8 @@
     
     Evento evento = (Evento) request.getAttribute("eventocod");
     int participanteCod = (Integer) request.getAttribute("participantecod");
+    
+    //List<Participante> participantes = (List<Participante>) request.getAttribute("participantes");
     
 %>
 <!DOCTYPE html>
@@ -40,6 +44,13 @@
                         <td>
                             <%=evento.getDataEvento() %>
                         </td>
+                        
+                        <% if(evento.getParticipantes().size()>0 ) { %>
+                        <td>
+                                <%=evento.getParticipantes().get(0).getNome() %>
+                        </td>
+                        <%}%>
+                        
                         
                         
                     </tbody>
