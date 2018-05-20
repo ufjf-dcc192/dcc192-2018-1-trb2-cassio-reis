@@ -7,6 +7,8 @@
     
     Evento evento = (Evento) request.getAttribute("eventocod");
     int participanteCod = (Integer) request.getAttribute("participantecod");
+    int flagJuntar = (Integer) request.getAttribute("flagjuntar");
+    
     
     //List<Participante> participantes = (List<Participante>) request.getAttribute("participantes");
     
@@ -28,31 +30,30 @@
          
             <div class="container">
                 <table class="table table-bordered">
+                   <thead>
+                    <tr>
+                        <th> Nome do evento:  <%=evento.getEventoNome()%></th>
+                        <th> Data do sorteio:  <%=evento.getDataSorteio() %></th>
+                        <th> Data do evento:   <%=evento.getDataEvento() %></th>
+              
+                    </tr>
+                </thead>
                     <tbody>
                 
-                        <td>
-                            <%=evento.getEventoNome()%>
+                                        
+                        <% if(evento.getParticipantes().size()>0 ) {
+                            for (int i = 0; i<evento.getParticipantes().size();i++){
+                                 %>
+                         <tr>
+                        <td colspan = 3>        
+                             <%=evento.getParticipantes().get(i).getNome() %>
                         </td>
+                         </tr>
+                        <%}
+}%>
+                        
+                        
                        
-                        
-                        
-                        <td>
-                            <%=evento.getDataSorteio() %>
-                        </td>
-                        
-                        
-                        <td>
-                            <%=evento.getDataEvento() %>
-                        </td>
-                        
-                        <% if(evento.getParticipantes().size()>0 ) { %>
-                        <td>
-                                <%=evento.getParticipantes().get(0).getNome() %>
-                        </td>
-                        <%}%>
-                        
-                        
-                        
                     </tbody>
                 </table>
              
@@ -60,9 +61,11 @@
               
               
             </div>
+                <% if(flagJuntar==0) {%>
             <div class="container">
                 <p><a href ="juntar-ao-sorteio.html?eventocod=<%=evento.getEventoCod()%>&participantecod=<%= participanteCod%>"  class="btn btn-primary btn-lg"> Juntar ao sorteio </a></p>
             </div>
+            <% }%>
                         <hr/>
 
             <div class="container">

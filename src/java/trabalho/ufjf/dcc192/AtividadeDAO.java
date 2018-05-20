@@ -76,9 +76,9 @@ class AtividadeDAO {
             
             Statement comando = conexao.createStatement();
             
-            String sql = "SELECT * from atividades a "
+            String sql = "SELECT * from atividade a "
                     + "join participante p on p.participantecod=a.participantecod "
-                    + "where eventocod=?";
+                    + "where a.eventocod=?";
             
             PreparedStatement stmt = conexao.prepareStatement(sql);
             stmt.setInt(1, eventoCod);
@@ -88,6 +88,7 @@ class AtividadeDAO {
                 Participante participante = new Participante();
                
                 participante.setNome(resultado.getString("NOME"));
+                participante.setCodigoParticipante(resultado.getInt("participantecod"));
                 participante.setEmail(resultado.getString("email"));
                 participantes.add(participante);
 

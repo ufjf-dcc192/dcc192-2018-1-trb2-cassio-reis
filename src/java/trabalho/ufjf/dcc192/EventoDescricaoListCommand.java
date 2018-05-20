@@ -21,23 +21,33 @@ public class EventoDescricaoListCommand implements Comando {
         try {
             int eventoCod = Integer.parseInt(request.getParameter("eventocod"));
             int usuarioLogado = Integer.parseInt(request.getParameter("participantecod"));
-         
-            
+            int flagJuntar=0;
+
             Evento evento = EventoDAO.getInstance().listEvento(eventoCod);
-             
-            request.setAttribute ("eventocod", evento);
-            request.setAttribute ("participantecod", usuarioLogado);
+
+            List<Participante> participantes = AtividadeDAO.getInstance().listParticipanteParticipantes(eventoCod);
+
+            for (int i = 0; i < participantes.size(); i++) {
+                evento.getParticipantes().add(participantes.get(i));
+
+            }
+
+            for (int i = 0; i < participantes.size(); i++) {
+                if (evento.getParticipantes().get(i).getCodigoParticipante() == usuarioLogado) {
+                     flagJuntar = 1;
+
+                }
+            }
+
+            request.setAttribute("eventocod", evento);
+            request.setAttribute("participantecod", usuarioLogado);
+            request.setAttribute("flagjuntar", flagJuntar);
             RequestDispatcher despachante = request.getRequestDispatcher("/WEB-INF/evento-descricao.jsp");
-            despachante.forward (request, response);
-            
-            
-        
+            despachante.forward(request, response);
+
         } catch (SQLException ex) {
             Logger.getLogger(EventoDescricaoListCommand.class.getName()).log(Level.SEVERE, null, ex);
         }
 
-       
     }
 }
-
-
