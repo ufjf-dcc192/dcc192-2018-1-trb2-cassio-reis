@@ -37,6 +37,7 @@ public class CommandSorteio  implements Comando{
                 }
             
             AtividadeDAO.getInstance().InsereSorteio(eventoCod,participantes.get(i).getCodigoParticipante(),participantes.get(0).getCodigoParticipante());
+            EventoDAO.getInstance().atualizaEvento(eventoCod);
             
      }
 }     

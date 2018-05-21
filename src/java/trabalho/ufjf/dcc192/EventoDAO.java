@@ -180,6 +180,23 @@ class EventoDAO {
             return eventos.get(0);
      
     }
+
+    void atualizaEvento(int eventoCod) {
+         try {
+                Statement comando = conexao.createStatement();
+                String sql = "UPDATE evento SET SITUACAO =? WHERE  EVENTOCOD=?";
+                PreparedStatement stmt = conexao.prepareStatement(sql);
+                stmt.setInt(1, 1);
+                stmt.setInt(2,  eventoCod);
+                stmt.executeUpdate();
+      
+     
+        } catch (SQLException ex) {
+            Logger.getLogger(ParticipanteDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        
+    }
 }
     
 
