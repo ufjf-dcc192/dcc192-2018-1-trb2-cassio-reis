@@ -71,7 +71,7 @@
             <div class="container">
                 <br/>
                 <p>  
-                    <a href ="eventos.html" class="btn btn-danger btn-lg"> Realizar Sorteio </a>
+                    <a href ="sortear.html?eventocod=<%=evento.getEventoCod()%>" class="btn btn-danger btn-lg"> Realizar Sorteio </a>
                 </p>
           
             </div>

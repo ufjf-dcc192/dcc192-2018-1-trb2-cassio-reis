@@ -100,6 +100,24 @@ class AtividadeDAO {
         }
         return participantes;
     }
+
+    void InsereSorteio(int eventoCod, int participanteCod, int sorteado) {
+    try {
+                Statement comando = conexao.createStatement();
+                String sql = "UPDATE ATIVIDADE SET SORTEADO =? WHERE  PARTICIPANTECOD =? AND EVENTOCOD=?";
+                PreparedStatement stmt = conexao.prepareStatement(sql);
+                stmt.setInt(1,  sorteado);
+                stmt.setInt(2, participanteCod);
+                stmt.setInt(3, eventoCod);
+                stmt.executeUpdate();
+      
+     
+        } catch (SQLException ex) {
+            Logger.getLogger(ParticipanteDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        
+    }
          
          
    }

@@ -26,6 +26,7 @@ public class NewEventoNewCommand implements Comando {
   
         
         try {
+            int usuarioLogado = Integer.parseInt(request.getParameter("participantecod"));
             SimpleDateFormat formato = new SimpleDateFormat("yyyy-mm-dd");
                   
             String nome = request.getParameter("nome");
@@ -34,7 +35,7 @@ public class NewEventoNewCommand implements Comando {
             
             EventoDAO.getInstance().create(nome,dataSorteio,dataEvento);
             
-            response.sendRedirect("ver-eventos.html");
+            response.sendRedirect("ver-eventos.html?participantecod="+usuarioLogado);
             
             //#erro inserir tratametno
         } catch (ParseException ex) {
