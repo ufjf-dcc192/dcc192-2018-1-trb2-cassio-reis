@@ -118,9 +118,36 @@ class AtividadeDAO {
         
         
     }
+
+    Participante verAmigoSorteado(int eventoCod, int usuarioLogado) {
+        Participante participante = new Participante();
+        
+        try {
+            Statement comando = conexao.createStatement();
+            String sql = "SELECT * from atividade a "
+                    + "join participante p on p.participantecod=a.participantecod "
+                    + "where a.eventocod=?";
+            
+            PreparedStatement stmt = conexao.prepareStatement(sql);
+            stmt.setInt(1, eventoCod);
+            ResultSet resultado  = stmt.executeQuery();      
+                                    
+            while (resultado.next()) {
+                participante.setNome(resultado.getString("NOME"));
+                participante.setCodigoParticipante(resultado.getInt("participantecod"));
+                participante.setEmail(resultado.getString("email"));
+               
+            }
+            resultado.close();
+            comando.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(ParticipanteDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return participante;
+   
+    }
          
-         
-   }
+ }
 
    
 

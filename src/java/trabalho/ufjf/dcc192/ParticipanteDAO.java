@@ -106,4 +106,26 @@ class ParticipanteDAO {
     
 
     }
+
+    Participante selecionarUsuario(int usuarioLogado) {
+        Participante participante = new Participante();
+        try {
+            Statement comando = conexao.createStatement();
+            String sql = "SELECT * from participante p "
+                  + "where p.participantecod=?";
+            PreparedStatement stmt = conexao.prepareStatement(sql);
+            stmt.setInt(1, usuarioLogado);
+            ResultSet resultado  = stmt.executeQuery();      
+            while (resultado.next()) {
+                participante.setNome(resultado.getString("NOME"));
+                participante.setCodigoParticipante(resultado.getInt("participantecod"));
+                participante.setEmail(resultado.getString("email"));
+            }
+            resultado.close();
+            comando.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(ParticipanteDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return participante;
+   }
 }
