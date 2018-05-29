@@ -22,26 +22,32 @@ import javax.servlet.http.HttpServletResponse;
  * @author ice
  */
 public class NewEventoNewCommand implements Comando {
+
     public void exec(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-  
-        
+
         try {
             int usuarioLogado = Integer.parseInt(request.getParameter("participantecod"));
             SimpleDateFormat formato = new SimpleDateFormat("yyyy-mm-dd");
-                  
+
             String nome = request.getParameter("nome");
             Date dataSorteio = formato.parse(request.getParameter("dataSorteio"));
             Date dataEvento = formato.parse(request.getParameter("dataEvento"));
-            
-            EventoDAO.getInstance().create(nome,dataSorteio,dataEvento);
-            
-            response.sendRedirect("ver-eventos.html?participantecod="+usuarioLogado);
-            
+
+            if (dataSorteio.compareTo(dataEvento) > 0) {
+
+                request.setAttribute("participantecod", usuarioLogado);
+                RequestDispatcher despachante = request.getRequestDispatcher("/WEB-INF/Erros/erro-data-evento-sorteio.jsp");
+                despachante.forward(request, response);
+            } else {
+
+                EventoDAO.getInstance().create(nome, dataSorteio, dataEvento);
+                response.sendRedirect("ver-eventos.html?participantecod=" + usuarioLogado);
+            }
             //#erro inserir tratametno
         } catch (ParseException ex) {
             Logger.getLogger(NewEventoNewCommand.class.getName()).log(Level.SEVERE, null, ex);
         }
-       
+
     }
-    
+
 }

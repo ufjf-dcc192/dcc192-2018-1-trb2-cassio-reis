@@ -17,19 +17,13 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-/**
- *
- * @author ice
- */
 @WebServlet(name = "EventoServlet", urlPatterns = {"/cadastrar-evento.html","/ver-eventos.html","/juntar-ao-sorteio.html","/descricao-evento.html","/amigo-sorteado.html","/sortear.html"})
 public class EventoServlet extends HttpServlet {
 
-    
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-    
-     
+
         Map<String, String> rotas = new HashMap<>();
         rotas.put("/cadastrar-evento.html", "trabalho.ufjf.dcc192.EventoNewCommand");
         rotas.put("/ver-eventos.html", "trabalho.ufjf.dcc192.EventoListCommand");
@@ -46,12 +40,8 @@ public class EventoServlet extends HttpServlet {
             response.sendError(500, "Erro: "+ex);
             Logger.getLogger(ParticipanteServlet.class.getName()).log(Level.SEVERE, null, ex);
         }
-
-        
     }
     
-
-
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -68,8 +58,5 @@ public class EventoServlet extends HttpServlet {
             response.sendError(500, "Erro: "+ex);
             Logger.getLogger(ParticipanteServlet.class.getName()).log(Level.SEVERE, null, ex);
         }
-
     }
-
-
 }

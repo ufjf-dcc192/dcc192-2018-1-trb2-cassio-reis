@@ -58,7 +58,6 @@ public class ControleServlet extends HttpServlet {
             rotas.put("/inicial.html", "trabalho.ufjf.dcc192.InicialCommand");
 
 
-            //rotas.put("/cadastro-pessoas.html", "trabalho.ufjf.dcc192.ParticipantesNewCommand");
             String clazzName = rotas.get(request.getServletPath());
         
     
@@ -75,13 +74,4 @@ public class ControleServlet extends HttpServlet {
         
     }
 
-    
-    @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        
-        
-    }
-
-    
  }
