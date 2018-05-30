@@ -30,6 +30,7 @@ public void exec(HttpServletRequest request, HttpServletResponse response) throw
         SimpleDateFormat formato = new SimpleDateFormat("yyyy-mm-dd");
 
         String nome = request.getParameter("nome");
+        String senhaEvento = request.getParameter("senhaEvento");
         Date dataSorteio = formato.parse(request.getParameter("dataSorteio"));
         Date dataEvento = formato.parse(request.getParameter("dataEvento"));
 
@@ -39,7 +40,7 @@ public void exec(HttpServletRequest request, HttpServletResponse response) throw
             despachante.forward(request, response);
         } else {
 
-            EventoDAO.getInstance().create(nome, dataSorteio, dataEvento);
+            EventoDAO.getInstance().create(nome, dataSorteio, dataEvento,senhaEvento);
             response.sendRedirect("ver-eventos.html?participantecod=" + usuarioLogado);
         }
         //#erro inserir tratametno

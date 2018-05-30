@@ -28,6 +28,12 @@
                     <input type="date" name="dataEvento" class="form-control" required>     
                 </div>
                 
+                 <div class="form-group">
+                    <label for="usr">Senha do evento:</label>
+                    <input type="password" name="senhaEvento" class="form-control" required>     
+                </div>
+                
+                
                 <input class="btn btn-primary btn" type ="Submit" /> 
                 <input class="btn btn-primary btn" type ="Reset" /> 
             </form>

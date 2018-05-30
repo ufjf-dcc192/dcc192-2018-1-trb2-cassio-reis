@@ -24,7 +24,9 @@ public class ParticipantesLoginCommand implements Comando {
             dispacher.forward(request, response);
             
         } else {
-            //#erro1 - tratar erro se a pessoa nao conseguir fazer o login.
+            RequestDispatcher dispacher = request.getRequestDispatcher("/WEB-INF/Erros/erro-login.jsp");
+            dispacher.forward(request, response);
+                
         }
     }
 }

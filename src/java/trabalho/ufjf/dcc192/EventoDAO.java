@@ -90,19 +90,20 @@ class EventoDAO {
         return Eventos;
     }
 
-    void create(String nome,Date dataSorteio, Date dataEvento ) {
+    void create(String nome,Date dataSorteio, Date dataEvento,String senhaEvento ) {
         try {
          
             java.sql.Date d = new java.sql.Date (dataSorteio.getTime());
             java.sql.Date dt = new java.sql.Date (dataEvento.getTime());
             
             Statement comando = conexao.createStatement();
-            String sql = "INSERT INTO EVENTO (EVENTONOME,DATASORTEIO,DATAEVENTO,SITUACAO) VALUES(?,?,?,?)";
+            String sql = "INSERT INTO EVENTO (EVENTONOME,DATASORTEIO,DATAEVENTO,SITUACAO,SENHAEVENTO) VALUES(?,?,?,?,?)";
             PreparedStatement stmt = conexao.prepareStatement(sql);
             stmt.setString(1, nome);
             stmt.setDate(2,  d);
             stmt.setDate(3,  dt);
             stmt.setInt(4,  0);
+            stmt.setString(5,  senhaEvento);
             
             stmt.executeUpdate();
       } catch (SQLException ex) {
