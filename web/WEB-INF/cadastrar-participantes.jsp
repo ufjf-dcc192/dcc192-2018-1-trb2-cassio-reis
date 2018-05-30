@@ -25,8 +25,30 @@
 
                 <div class="form-group">
                     <label for="usr">Senha</label>
-                    <input type="password" name="senha" class="form-control" required>     
+                    <input  type="password" name="senha" class="form-control" required>     
                 </div>
+                
+                <div class="form-group">
+                    <label for="usr">Tamanho Sapato:</label>
+                    <input type = "number" name="tamanhoSapato" class="form-control" required>     
+                </div>
+                
+                <div class="form-group">
+                    <label for="usr">Tamanho Camisa:</label>
+                    <input  type = "number"  name="tamanhoCamisa" class="form-control" required>     
+                </div>
+                
+                <div class="form-group">
+                    <label for="usr">Tamanho Calça</label>
+                    <input  type = "number"  name="tamanhoCalca" class="form-control" required>     
+                </div>
+                
+                <div class="form-group">
+                    <label for="usr">Interesses</label>
+                    <textarea name="interesses" class="form-control" required> </textarea>    
+                </div>
+                
+                
 
                 <input class="btn btn-primary btn" type ="Submit" /> 
                 <input class="btn btn-primary btn" type ="Reset" /> 

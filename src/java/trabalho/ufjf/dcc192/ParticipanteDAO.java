@@ -55,11 +55,21 @@ class ParticipanteDAO {
         return Participantes;
     }
 
-    void create(String nome,String email, String senha ) {
+    void create(String nome,String email, String senha, int tamanhoCalca, int tamanhoSapato, int tamanhoCamisa, String interesses ) {
         try {
+            
             Statement comando = conexao.createStatement();
-            comando.executeUpdate(String.format("INSERT INTO Participante (NOME,EMAIL,SENHA) VALUES('%s','%s','%s')", nome,email,senha));
-            comando.close();
+            String sql = "INSERT INTO PARTICIPANTE (NOME,EMAIL,SENHA,TAMANHOCALCA,TAMANHOCAMISA,TAMANHOSAPATO,INTERESSES) VALUES (?,?,?,?,?,?,?)";
+            PreparedStatement stmt = conexao.prepareStatement(sql);
+            stmt.setString(1, nome);
+            stmt.setString(2,  email);
+            stmt.setString(3,  senha);
+            stmt.setInt(4,  tamanhoCalca);
+            stmt.setInt(5,  tamanhoCamisa);
+            stmt.setInt(6,  tamanhoSapato);
+            stmt.setString(7,  interesses);
+            
+            stmt.executeUpdate();
         } catch (SQLException ex) {
             Logger.getLogger(ParticipanteDAO.class.getName()).log(Level.SEVERE, null, ex);
         }

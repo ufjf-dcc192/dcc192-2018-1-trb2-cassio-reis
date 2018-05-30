@@ -24,7 +24,6 @@
                     <tr>
                         <th>Nome</th>
                         <th>Email</th>
-                        <th>Idade</th>
                         <th>Tamanho de camisa</th>
                         <th>Tamanho de sapatos</th>
                         <th>Tamanho de calças</th>
@@ -35,6 +34,10 @@
                     <tr>
                         <td> <%= participanteLogado.getNome() %></td>
                         <td> <%= participanteLogado.getEmail() %></td>
+                        <td> <%= participanteLogado.getTamanhoCamisa() %></td>
+                        <td> <%= participanteLogado.getTamanhoCalca() %></td>
+                        <td> <%= participanteLogado.getTamanhoSapato() %></td>
+                        <td> <%= participanteLogado.getInteresses() %></td>
                     </tr>
                 </tbody>
             </table>

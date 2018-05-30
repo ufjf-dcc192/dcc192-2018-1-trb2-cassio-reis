@@ -136,6 +136,10 @@ class AtividadeDAO {
                 participante.setNome(resultado.getString("NOME"));
                 participante.setCodigoParticipante(resultado.getInt("participantecod"));
                 participante.setEmail(resultado.getString("email"));
+                participante.setTamanhoCalca(resultado.getString("TAMANHOCALCA"));
+                participante.setTamanhoCamisa(resultado.getString("TAMANHOCAMISA"));
+                participante.setTamanhoSapato(resultado.getString("TAMANHOSAPATO"));
+                participante.setInteresses(resultado.getString("INTERESSES"));
                
             }
             resultado.close();
