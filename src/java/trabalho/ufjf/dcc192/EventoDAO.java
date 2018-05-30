@@ -160,7 +160,7 @@ class EventoDAO {
             String sql = "select * from Evento where eventocod=? ";
             PreparedStatement stmt = conexao.prepareStatement(sql);
             stmt.setInt(1, eventoCod);
-            
+    
                                     
             Statement comando = conexao.createStatement();
             ResultSet resultado  = stmt.executeQuery();
@@ -182,6 +182,37 @@ class EventoDAO {
      
     }
 
+    
+      public List<Evento> listEventoVerificado(int eventoCod,String senhaEvento) throws SQLException {
+      
+            List<Evento> eventos = new ArrayList<>();
+            
+            
+            String sql = "select * from Evento where eventocod=? and senhaevento = ?";
+            PreparedStatement stmt = conexao.prepareStatement(sql);
+            stmt.setInt(1, eventoCod);
+            stmt.setString(2, senhaEvento);
+                                    
+            Statement comando = conexao.createStatement();
+            ResultSet resultado  = stmt.executeQuery();
+            
+            while (resultado.next()) {
+                Evento Evento = new Evento();
+                Evento.setEventoNome(resultado.getString("EVENTONOME"));
+                Evento.setDataEvento(resultado.getDate("DATAEVENTO"));
+                Evento.setDataSorteio(resultado.getDate("DATASORTEIO"));
+                Evento.setSituacao(resultado.getInt("SITUACAO"));
+                Evento.setEventoCod(resultado.getInt("EVENTOCOD"));
+                eventos.add(Evento);
+            }
+            resultado.close();
+            comando.close();
+            return eventos;
+     
+    }
+
+      
+      
     void atualizaEvento(int eventoCod) {
          try {
                 Statement comando = conexao.createStatement();

@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package trabalho.ufjf.dcc192;
 
 import java.io.IOException;
@@ -17,7 +12,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@WebServlet(name = "EventoServlet", urlPatterns = {"/cadastrar-evento.html","/ver-eventos.html","/juntar-ao-sorteio.html","/descricao-evento.html","/amigo-sorteado.html","/sortear.html"})
+@WebServlet(name = "EventoServlet", urlPatterns = {"/cadastrar-evento.html", "/ver-eventos.html", "/juntar-ao-sorteio.html", "/descricao-evento.html", "/amigo-sorteado.html", "/sortear.html", "/permissao-sorteio.html"})
 public class EventoServlet extends HttpServlet {
 
     @Override
@@ -31,31 +26,33 @@ public class EventoServlet extends HttpServlet {
         rotas.put("/juntar-ao-sorteio.html", "trabalho.ufjf.dcc192.CommandJuntarSorteio");
         rotas.put("/sortear.html", "trabalho.ufjf.dcc192.CommandSorteio");
         rotas.put("/amigo-sorteado.html", "trabalho.ufjf.dcc192.CommandAmigoSorteado");
-    
+        rotas.put("/permissao-sorteio.html", "trabalho.ufjf.dcc192.CommandPermissaoSorteio");
+
         String clazzName = rotas.get(request.getServletPath());
         try {
             Comando comando = (Comando) Class.forName(clazzName).newInstance();
             comando.exec(request, response);
-        } catch (ClassNotFoundException|IllegalAccessException|InstantiationException ex) {
-            response.sendError(500, "Erro: "+ex);
+        } catch (ClassNotFoundException | IllegalAccessException | InstantiationException ex) {
+            response.sendError(500, "Erro: " + ex);
             Logger.getLogger(ParticipanteServlet.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-    
+
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
-          Map<String, String> rotas = new HashMap<>();
+
+        Map<String, String> rotas = new HashMap<>();
         rotas.put("/cadastrar-evento.html", "trabalho.ufjf.dcc192.NewEventoNewCommand");
         rotas.put("/ver-eventos.html", "trabalho.ufjf.dcc192.EventoListCommand");
-    
+        rotas.put("/permissao-sorteio.html", "trabalho.ufjf.dcc192.CommandPermissaoVerifica");
+
         String clazzName = rotas.get(request.getServletPath());
         try {
             Comando comando = (Comando) Class.forName(clazzName).newInstance();
             comando.exec(request, response);
-        } catch (ClassNotFoundException|IllegalAccessException|InstantiationException ex) {
-            response.sendError(500, "Erro: "+ex);
+        } catch (ClassNotFoundException | IllegalAccessException | InstantiationException ex) {
+            response.sendError(500, "Erro: " + ex);
             Logger.getLogger(ParticipanteServlet.class.getName()).log(Level.SEVERE, null, ex);
         }
     }

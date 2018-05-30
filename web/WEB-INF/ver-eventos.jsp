@@ -37,7 +37,7 @@
                     %>
                     <tr>
 
-                        <td> <a href="descricao-evento.html?eventocod=<%=eventos.get(i).getEventoCod() %>&participantecod=<%=participanteCod%>"><%= eventos.get(i).getEventoNome() %> </a></td>
+                        <td> <a href="permissao-sorteio.html?eventocod=<%=eventos.get(i).getEventoCod() %>&participantecod=<%=participanteCod%>"><%= eventos.get(i).getEventoNome() %> </a></td>
                         <% if (eventos.get(i).getSituacao() == 0) {
                         %><td style="color:blue">
                             <b> SORTEAR</b>
