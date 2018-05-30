@@ -32,12 +32,12 @@
                 </thead>
                 <tbody>
                     <tr>
-                        <td> <%= participanteLogado.getNome() %></td>
-                        <td> <%= participanteLogado.getEmail() %></td>
-                        <td> <%= participanteLogado.getTamanhoCamisa() %></td>
-                        <td> <%= participanteLogado.getTamanhoCalca() %></td>
-                        <td> <%= participanteLogado.getTamanhoSapato() %></td>
-                        <td> <%= participanteLogado.getInteresses() %></td>
+                        <td> <%= amigoSorteado.getNome() %></td>
+                        <td> <%= amigoSorteado.getEmail() %></td>
+                        <td> <%= amigoSorteado.getTamanhoCamisa() %></td>
+                        <td> <%= amigoSorteado.getTamanhoCalca() %></td>
+                        <td> <%= amigoSorteado.getTamanhoSapato() %></td>
+                        <td> <%= amigoSorteado.getInteresses() %></td>
                     </tr>
                 </tbody>
             </table>

@@ -17,16 +17,14 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-/**
- *
- * @author ice
- */
+
 public class CommandSorteio  implements Comando{
       
     public void exec(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         
             int i = 0;
             int eventoCod = Integer.parseInt(request.getParameter("eventocod"));
+            int participanteCod = Integer.parseInt(request.getParameter("participantecod"));
             List<Participante> participantes = AtividadeDAO.getInstance().listParticipanteParticipantes(eventoCod);
             Collections.shuffle(participantes);
           
@@ -38,7 +36,8 @@ public class CommandSorteio  implements Comando{
             
             AtividadeDAO.getInstance().InsereSorteio(eventoCod,participantes.get(i).getCodigoParticipante(),participantes.get(0).getCodigoParticipante());
             EventoDAO.getInstance().atualizaEvento(eventoCod);
-            
+            String redirect = "amigo-sorteado.html?participantecod=" + participanteCod + "&eventocod=" + eventoCod ;
+            response.sendRedirect(redirect);
             
      }
 }     

@@ -55,6 +55,6 @@
             </form>
         </div>
     </body>
-    <%@include file ="jspf/rodape.jspf"%>
+    <%@include file ="../jspf/rodape.jspf"%>
 
 </html>
