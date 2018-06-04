@@ -24,8 +24,8 @@
                 </div>
                 <ul class="nav navbar-nav">
                     <li class="active"><a href="index.html">Home</a></li>
-                    <li><a href="mesas.html">Cadastrar</a></li>
-                    <li><a href="cardapio.html">Fazer Login</a></li>
+                    <li><a href="cadastro-pessoas.html">Cadastrar</a></li>
+                    <li><a href="login.html"  data-toggle="modal" data-target="#myModal" >Fazer Login</a></li>
                 </ul>
             </div>
         </nav>
