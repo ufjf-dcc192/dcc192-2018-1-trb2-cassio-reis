@@ -1,3 +1,8 @@
+<%
+
+    int participanteCod = Integer.parseInt( request.getParameter("participantecod"));
+
+%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -7,9 +12,18 @@
         <%@include file ="jspf/cabecalho.jspf"%>
     </head>
     <body>
+         <nav class="navbar navbar-default">
+            <div class="container-fluid">
+                <ul class="nav navbar-nav">
+                    <li><a href="cadastrar-evento.html?participantecod=<%=participanteCod%>">Cadastrar evento</a></li>
+                    <li><a href="ver-eventos.html?participantecod=<%=participanteCod%>">Ver evento</a></li>
+                    <li><a href="index.html">Sair</a></li>
+                </ul>
+            </div>
+        </nav>
         <div class="container">
             <h1> Bem-vindo </h1>
-            <h3> Faça seu cadastro </h3>
+            <h3>Cadastre seu evento </h3>
         </div>
         <div class="container">
             <form method="post">

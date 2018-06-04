@@ -15,6 +15,15 @@
         <%@include file ="jspf/cabecalho.jspf"%>
     </head>
     <body>
+        <nav class="navbar navbar-default">
+            <div class="container-fluid">
+                <ul class="nav navbar-nav">
+                    <li><a href="cadastrar-evento.html?participantecod=<%=participanteCod%>">Cadastrar evento</a></li>
+                    <li><a href="ver-eventos.html?participantecod=<%=participanteCod%>">Ver evento</a></li>
+                    <li><a href="index.html">Sair</a></li>
+                </ul>
+            </div>
+        </nav>
     <div class="container">
         <h1>Gerenciamento de Evento</h1>
         <p>Seja bem-vindo, clique na mesa desejada para adicionar um pedido</p>

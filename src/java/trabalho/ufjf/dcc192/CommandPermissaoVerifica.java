@@ -24,7 +24,7 @@ public class CommandPermissaoVerifica implements Comando {
            
             if(eventos.size() == 0){
             
-                RequestDispatcher despachante = request.getRequestDispatcher("/WEB-INF/Erros/erro-login.jsp");
+                RequestDispatcher despachante = request.getRequestDispatcher("/WEB-INF/Erros/erro-acesso.jsp");
                 despachante.forward(request, response);
                 
             }else{
