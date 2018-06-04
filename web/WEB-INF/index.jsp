@@ -29,10 +29,6 @@
                 </ul>
             </div>
         </nav>
-
-
-
-
         <div class="container text-center">
             <div class="container-fluid">
                 <h1 style="color:white">AMigoculto dos amigos</h1>
@@ -42,8 +38,6 @@
                 <a href="login.html"  data-toggle="modal" data-target="#myModal"  class="btn btn-default btn-lg"> Faça seu login </a>
             </div>
         </div>
-
-
         <div class="modal fade" id="myModal" role="dialog">
             <div class="modal-dialog">
 
