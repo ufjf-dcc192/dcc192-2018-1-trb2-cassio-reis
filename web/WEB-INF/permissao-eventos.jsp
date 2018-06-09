@@ -34,7 +34,7 @@
                     <input type="password" name="senhaEvento" class="form-control" required>     
                 </div>
 
-                <input class="btn btn-primary btn" type ="Submit" /> 
+                <input class="btn btn-primary btn" type ="Submit"  value="Enviar"/> 
                 <input class="btn btn-primary btn" type ="Reset" /> 
             </form>
     

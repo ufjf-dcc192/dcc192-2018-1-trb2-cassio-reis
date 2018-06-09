@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package trabalho.ufjf.dcc192;
 
 import java.io.IOException;
@@ -17,36 +12,32 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-/**
- *
- * @author ice
- */
 public class NewEventoNewCommand implements Comando {
 
-public void exec(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    public void exec(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-    try {
-        int usuarioLogado = Integer.parseInt(request.getParameter("participantecod"));
-        SimpleDateFormat formato = new SimpleDateFormat("yyyy-mm-dd");
+        try {
+            int usuarioLogado = Integer.parseInt(request.getParameter("participantecod"));
+            SimpleDateFormat formato = new SimpleDateFormat("yyyy-mm-dd");
 
-        String nome = request.getParameter("nome");
-        String senhaEvento = request.getParameter("senhaEvento");
-        Date dataSorteio = formato.parse(request.getParameter("dataSorteio"));
-        Date dataEvento = formato.parse(request.getParameter("dataEvento"));
+            String nome = request.getParameter("nome");
+            String senhaEvento = request.getParameter("senhaEvento");
+            Date dataSorteio = formato.parse(request.getParameter("dataSorteio"));
+            Date dataEvento = formato.parse(request.getParameter("dataEvento"));
 
-        if (dataSorteio.getTime() > dataEvento.getTime()) {
-            request.setAttribute("participantecod", usuarioLogado);
-            RequestDispatcher despachante = request.getRequestDispatcher("/WEB-INF/Erros/erro-data-evento-sorteio.jsp");
-            despachante.forward(request, response);
-        } else {
+            if (dataSorteio.getTime() > dataEvento.getTime()) {
+                request.setAttribute("participantecod", usuarioLogado);
+                RequestDispatcher despachante = request.getRequestDispatcher("/WEB-INF/Erros/erro-data-evento-sorteio.jsp");
+                despachante.forward(request, response);
+            } else {
 
-            EventoDAO.getInstance().create(nome, dataSorteio, dataEvento,senhaEvento);
-            response.sendRedirect("ver-eventos.html?participantecod=" + usuarioLogado);
+                EventoDAO.getInstance().create(nome, dataSorteio, dataEvento, senhaEvento);
+                response.sendRedirect("ver-eventos.html?participantecod=" + usuarioLogado);
+            }
+            //#erro inserir tratametno
+        } catch (ParseException ex) {
+            Logger.getLogger(NewEventoNewCommand.class.getName()).log(Level.SEVERE, null, ex);
         }
-        //#erro inserir tratametno
-    } catch (ParseException ex) {
-        Logger.getLogger(NewEventoNewCommand.class.getName()).log(Level.SEVERE, null, ex);
-    }
 
     }
 

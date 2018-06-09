@@ -57,8 +57,8 @@
                                 }
                             %> 
                         </td>
-                        <td><%= eventos.get(i).getDataEvento()%> </td>
                         <td><%= eventos.get(i).getDataSorteio()%> </td>
+                        <td><%= eventos.get(i).getDataEvento()%> </td>
                     </tr>
 
                     <%

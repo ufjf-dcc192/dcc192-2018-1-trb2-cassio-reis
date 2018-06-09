@@ -3,7 +3,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Adicionar Pedido</title>
+        <title>Cadastro</title>
         <%@include file ="jspf/cabecalho.jspf"%>
     </head>
     <body>
@@ -50,11 +50,12 @@
                 
                 
 
-                <input class="btn btn-primary btn" type ="Submit" /> 
+                <input class="btn btn-primary btn" type ="Submit" value="Enviar"/> 
                 <input class="btn btn-primary btn" type ="Reset" /> 
             </form>
         </div>
+     
     </body>
-    <%@include file ="jspf/rodape.jspf"%>
+
 
 </html>
